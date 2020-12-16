@@ -24,5 +24,35 @@ namespace TicTacToe
         {
             InitializeComponent();
         }
+
+        private void BtnNewGame_Click(object sender, RoutedEventArgs e)
+        {
+            btnResumeGame.Visibility = Visibility.Collapsed;
+            btnSimulateGame.Visibility = Visibility.Collapsed;
+            comboBoxGameType.Visibility = Visibility.Visible;
+        }
+
+        private void BtnStartGame_Click(object sender, RoutedEventArgs e)
+        {
+            //Pass the user game selection to the new window.
+            string gameType = comboBoxGameType.Text;            
+            LaunchGameWindow(gameType);
+        }
+
+        private void ComboBoxGameType_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnStartGame.Visibility = Visibility.Visible;
+            
+        }
+
+        private void LaunchGameWindow(string gameType)
+        {
+            //Pass the user game selection to the new window.
+            GameWindow gameWindow = new GameWindow(gameType);
+            gameWindow.Show();
+            this.Close();
+
+        }
+
     }
 }
