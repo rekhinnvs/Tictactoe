@@ -9,10 +9,37 @@
         xmlns:local="clr-namespace:TicTacToe"
         mc:Ignorable="d"
         Title="GameWindow" Height="600" Width="500" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style x:Key="MaterialDesignToolButton" TargetType="{x:Type ButtonBase}" BasedOn="{StaticResource MaterialDesignFlatButton}">
+            <Setter Property="Foreground" Value="{DynamicResource MaterialDesignToolForeground}"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="FontSize" Value="75"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ButtonBase">
+                        <materialDesign:Ripple Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}" Focusable="False"
+                                ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" Value="0.23"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid>
 
         <Canvas x:Name="CanvasGamePage" Width="auto" Height="450" d:IsHidden="False" Margin="0,0,-0.4,120.4">
-            <Grid  Height="450"  Width="494">
+            <Grid x:Name="gridContainer" Height="450"  Width="494" ShowGridLines="True">
+              
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -23,19 +50,20 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
+            
 
-                <Button x:Name="Button0_0" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="0" Grid.Row="0" Content="O" Width="auto" Height="Auto"/>
-                <Button x:Name="Button0_1" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="1" Grid.Row="0" Content="O" Width="auto" Height="Auto"/>
-                <Button x:Name="Button0_2" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="2" Grid.Row="0" Content="O" Width="auto" Height="Auto"/>
+                <Button Click="GameButton_Click" x:Name="Button0_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="0" Width="auto" Height="Auto" Content="X"/>
+                <Button Click="GameButton_Click" x:Name="Button0_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="0" Width="auto" Height="Auto" Content="O"/>
+                <Button Click="GameButton_Click" x:Name="Button0_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="0" Width="auto" Height="Auto"/>
 
-                <Button x:Name="Button1_0" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="0" Grid.Row="1" Content="O" Width="auto" Height="Auto"/>
-                <Button x:Name="Button1_1" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="1" Grid.Row="1" Content="O" Width="auto" Height="Auto"/>
-                <Button x:Name="Button1_2" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="2" Grid.Row="1" Content="O" Width="auto" Height="Auto"/>
+                <Button Click="GameButton_Click" x:Name="Button1_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="1" Width="auto" Height="Auto"/>
+                <Button Click="GameButton_Click" x:Name="Button1_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="1" Width="auto" Height="Auto"/>
+                <Button Click="GameButton_Click" x:Name="Button1_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="1" Width="auto" Height="Auto"/>
 
-                <Button x:Name="Button2_0" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="0" Grid.Row="2" Content="O" Width="auto" Height="Auto"/>
-                <Button x:Name="Button2_1" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="1" Grid.Row="2" Content="O" Width="auto" Height="Auto"/>
-                <Button x:Name="Button2_2" Style="{DynamicResource MaterialDesignFlatButton}" Grid.Column="2" Grid.Row="2" Content="O" Width="auto" Height="Auto"/>
-
+                <Button Click="GameButton_Click" x:Name="Button2_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="2" Width="auto" Height="Auto"/>
+                <Button Click="GameButton_Click" x:Name="Button2_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="2" Width="auto" Height="Auto"/>
+                <Button Click="GameButton_Click" x:Name="Button2_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="2" Width="auto" Height="Auto"/>
+            
 
             </Grid>
         </Canvas>
