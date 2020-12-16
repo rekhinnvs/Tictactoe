@@ -23,7 +23,7 @@ namespace TicTacToe
         {
 
             InitializeComponent();
-            lbltest.Content = gameType;
+           // lbltest.Content = gameType;
         }
     }
 }

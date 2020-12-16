@@ -17,8 +17,8 @@
         </Grid.ColumnDefinitions>
         <Canvas x:Name="CanvasHomePage" Width="500" Height="500" Grid.ColumnSpan="2" Margin="0,35,-6.4,35.4">
             <Button Content="New Game" Name="btnNewGame" Canvas.Left="134" Canvas.Top="45" Width="220" Height="70" Click="BtnNewGame_Click"/>
-            <Button Content="Resume Game" Name="btnResumeGame" Canvas.Left="134" Canvas.Top="156" Width="220" Height="70"/>
-            <Button Content="Simulate Game" Name="btnSimulateGame" Canvas.Left="134" Canvas.Top="265" Width="220" Height="70"/>
+            <Button Content="Resume Game" Name="btnResumeGame" Canvas.Left="134" Canvas.Top="156" Width="220" Height="70" Click="BtnResumeGame_Click"/>
+            <Button Content="Simulate Game" Name="btnSimulateGame" Canvas.Left="134" Canvas.Top="265" Width="220" Height="70" Click="BtnSimulateGame_Click"/>
             <ComboBox  Height="30" Name="comboBoxGameType" Width="220" materialDesign:HintAssist.Hint= "Choose Game type" SelectionChanged="ComboBoxGameType_SelectionChanged" Visibility="Collapsed" Canvas.Left="134" Canvas.Top="200" IsReadOnly="True" HorizontalAlignment="Center">
                 <ComboBoxItem Content="User - User"/>
                 <ComboBoxItem Content="User - Computer"/>

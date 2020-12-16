@@ -41,6 +41,7 @@ namespace TicTacToe
 
         private void ComboBoxGameType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Enable Start button when the user selects a game type
             btnStartGame.Visibility = Visibility.Visible;
             
         }
@@ -54,5 +55,18 @@ namespace TicTacToe
 
         }
 
+        private void BtnResumeGame_Click(object sender, RoutedEventArgs e)
+        {
+            //Get the button text and pass it to the game window
+            Button button = (Button)sender;
+            LaunchGameWindow(button.Content.ToString());
+        }
+
+        private void BtnSimulateGame_Click(object sender, RoutedEventArgs e)
+        {
+            //Get the button text and pass it to the game window
+            Button button = (Button)sender;
+            LaunchGameWindow(button.Content.ToString());
+        }
     }
 }
