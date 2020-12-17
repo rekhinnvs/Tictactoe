@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
+using TicTacToe.Classes;
 
 namespace TicTacToe.Classes
 {
@@ -13,42 +14,54 @@ namespace TicTacToe.Classes
 
         XmlWriterSettings xmlWriterSettings;
         XmlWriter xmlWriter;
+        XmlDocument doc;
 
-
-        public void CreateXMLFile(string fileName)
+        public void CreateXMLFile(XmlAttributes xmlElements)
         {
             xmlWriterSettings = new XmlWriterSettings();
             xmlWriterSettings.Indent = true;
-           // xmlWriterSettings.NewLineOnAttributes = true;
+            
+            // xmlWriterSettings.NewLineOnAttributes = true;
 
-            using (xmlWriter = XmlWriter.Create(fileName, xmlWriterSettings))
+            using (xmlWriter = XmlWriter.Create(xmlElements.FileName, xmlWriterSettings))
             {
                 xmlWriter.WriteStartDocument();
                 xmlWriter.WriteStartElement("Game");
                 xmlWriter.WriteStartElement("Move");
-
-
-                xmlWriter.WriteStartElement("Step");
-                xmlWriter.WriteAttributeString("StepID", "value");
-                xmlWriter.WriteAttributeString("Time", "value");
-                xmlWriter.WriteEndElement();
-                xmlWriter.WriteStartElement("Player");
-                xmlWriter.WriteAttributeString("ID", "value");
-                xmlWriter.WriteAttributeString("Type", "value");
-                xmlWriter.WriteEndElement();
-                xmlWriter.WriteStartElement("Play");
-                xmlWriter.WriteAttributeString("sign", "value");
-                xmlWriter.WriteString("hwllo");
-                xmlWriter.WriteEndElement();
-
 
                 xmlWriter.WriteEndDocument();
                 xmlWriter.Flush();
                 xmlWriter.Close();
             }
 
+
         }
 
-       
+        public void AppendToRoot(XmlAttributes xmlElements)
+        {
+            doc = new XmlDocument();
+            doc.Load(xmlElements.FileName);
+
+            XmlElement Move = doc.CreateElement("Move");
+            XmlElement StepID = doc.CreateElement("Step");
+            StepID.SetAttribute("StepID",xmlElements.StepID.ToString());
+            StepID.SetAttribute("Time", xmlElements.StepTime);
+
+            XmlElement Player = doc.CreateElement("Player");
+            Player.SetAttribute("ID", xmlElements.PlayerID);
+            Player.SetAttribute("Type",xmlElements.PlayerType);
+
+            XmlElement Play = doc.CreateElement("Play");
+            Play.SetAttribute("sign",xmlElements.PlaySign);
+            Play.InnerXml = xmlElements.PlayLocation;
+
+            Move.AppendChild(StepID);
+            Move.AppendChild(Player);
+            Move.AppendChild(Play);
+            doc.DocumentElement.AppendChild(Move);
+            doc.Save(xmlElements.FileName);
+
+
+        }
     }
 }

@@ -29,12 +29,20 @@ namespace TicTacToe
         string GameType;
         XmlHandler xmlHandler;
 
+        //Object for all the xml attributes
+        XmlAttributes xmlElements;
+
         //File name for xml
         string xmlFileName;
+
+        //Counter for steps
+        int counter;
 
         public GameWindow(string gameType)
         {
             InitializeComponent();
+
+           
             GameType = gameType;
             List<string> cellContent = new List<string>();
             xmlHandler = new XmlHandler();
@@ -42,11 +50,19 @@ namespace TicTacToe
 
             if(gameType == "User - User")
             {
+                //Initialize the xml attribute
+                xmlElements = new XmlAttributes();
+
                 //trim the extra characters from the user string
                 xmlFileName = gameType.Replace(" ", "");
                 //Get the current time in hours.
                 String hourMinute = DateTime.Now.ToString("mm");
-                xmlHandler.CreateXMLFile("../../xmlFiles/"+xmlFileName+hourMinute+".xml");
+
+                //Add the file name to xmlattributes class
+                xmlElements.FileName = "../../xmlFiles/"+xmlFileName+hourMinute+".xml";
+                xmlHandler.CreateXMLFile(xmlElements);
+
+               // xmlHandler.AppendToRoot(xmlElements);
                 NewGame();
                 CanvasUserUser.Visibility = Visibility.Visible;
             }
@@ -89,6 +105,10 @@ namespace TicTacToe
             player1 = false;
             isGameFinisihed = false;
             ClearAllCells();
+            counter = 0;
+
+            //Set the time as 2 seconds by default
+            xmlElements.StepTime = 2.ToString();
         }
 
         private void CellButton_Click(object sender, RoutedEventArgs e)
@@ -96,6 +116,8 @@ namespace TicTacToe
             var button = (Button)sender;
             if(GameType == "User - User")
             {
+                //Set the player type for xml element
+                xmlElements.PlayerType = "user";
                 UserClicks(button);
             }
             else if(GameType == "User - Computer")
@@ -195,6 +217,8 @@ namespace TicTacToe
             var column = Grid.GetColumn(button);
             var row = Grid.GetRow(button);
 
+            //Add the row and column to the xml attribute class
+            xmlElements.PlayLocation = column.ToString() + row.ToString();
             //Find the index
             var index = column + (row * 3);
 
@@ -222,9 +246,17 @@ namespace TicTacToe
             // change the button text
             button.Content = player1 ? "O" : "X";
 
+            //Set the play sign for the xml element
+            xmlElements.PlaySign = player1 ? "O" : "X";
+
+            //Add the player details to xml element class
+            xmlElements.PlayerID = player1 ? "Player2" : "Player1";
+
             //toggle the player1 status
             player1 ^= true;
-
+            // MessageBox.Show(xmlElements.FileName+ "\n" + xmlElements.StepID + "\n" + xmlElements.StepTime + "\n" +
+            //  xmlElements.PlayerID + xmlElements.PlayerType + xmlElements.PlaySign + xmlElements.PlayLocation);
+            xmlHandler.AppendToRoot(xmlElements);
             CheckGameStatus();
         }
 

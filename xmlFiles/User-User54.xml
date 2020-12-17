@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Game>
-  <Move>
-    <Step StepID="value" Time="value" />
-    <Player ID="value" Type="value" />
-    <Play sign="value">hwllo</Play>
-  </Move>
-</Game>

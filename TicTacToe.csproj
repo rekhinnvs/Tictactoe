@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\XmlAttributes.cs" />
     <Compile Include="Classes\XmlHandler.cs" />
     <Page Include="GameWindow.xaml">
       <SubType>Designer</SubType>
