@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        Background="{DynamicResource MaterialDesignPaper}"
+        WindowStyle="None"
+        AllowsTransparency="True"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         xmlns:local="clr-namespace:TicTacToe"
         mc:Ignorable="d"
@@ -39,7 +40,7 @@
 
         <Canvas x:Name="CanvasGamePage" Width="auto" Height="450" d:IsHidden="False" Margin="0,0,-0.4,120.4">
             <Grid x:Name="gridContainer" Height="450"  Width="494" ShowGridLines="True">
-              
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -50,24 +51,36 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-            
 
-                <Button Click="GameButton_Click" x:Name="Button0_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="0" Width="auto" Height="Auto" Content="X"/>
-                <Button Click="GameButton_Click" x:Name="Button0_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="0" Width="auto" Height="Auto" Content="O"/>
-                <Button Click="GameButton_Click" x:Name="Button0_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="0" Width="auto" Height="Auto"/>
 
-                <Button Click="GameButton_Click" x:Name="Button1_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="1" Width="auto" Height="Auto"/>
-                <Button Click="GameButton_Click" x:Name="Button1_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="1" Width="auto" Height="Auto"/>
-                <Button Click="GameButton_Click" x:Name="Button1_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="1" Width="auto" Height="Auto"/>
+                <Button Click="CellButton_Click" x:Name="Button0_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="0" Width="auto" Height="Auto"/>
+                <Button Click="CellButton_Click" x:Name="Button0_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="0" Width="auto" Height="Auto"/>
+                <Button Click="CellButton_Click" x:Name="Button0_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="0" Width="auto" Height="Auto"/>
 
-                <Button Click="GameButton_Click" x:Name="Button2_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="2" Width="auto" Height="Auto"/>
-                <Button Click="GameButton_Click" x:Name="Button2_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="2" Width="auto" Height="Auto"/>
-                <Button Click="GameButton_Click" x:Name="Button2_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="2" Width="auto" Height="Auto"/>
-            
+                <Button Click="CellButton_Click" x:Name="Button1_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="1" Width="auto" Height="Auto"/>
+                <Button Click="CellButton_Click" x:Name="Button1_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="1" Width="auto" Height="Auto"/>
+                <Button Click="CellButton_Click" x:Name="Button1_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="1" Width="auto" Height="Auto"/>
 
+                <Button Click="CellButton_Click" x:Name="Button2_0" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="0" Grid.Row="2" Width="auto" Height="Auto"/>
+                <Button Click="CellButton_Click" x:Name="Button2_1" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="1" Grid.Row="2" Width="auto" Height="Auto"/>
+                <Button Click="CellButton_Click" x:Name="Button2_2" Style="{DynamicResource MaterialDesignToolButton}" Grid.Column="2" Grid.Row="2" Width="auto" Height="Auto"/>
             </Grid>
         </Canvas>
-        <Canvas x:Name="CanvasFinishPage" Background="Blue" Width="auto" Height="120" d:IsHidden="False" Margin="0,450,-0.4,0.4"/>
+        
+        <Canvas x:Name="CanvasUserUser"  Width="auto" Height="120" d:IsHidden="True" Margin="0,480,0,0">
+            <Button Click="BtnNew_Click" x:Name="BtnNewGame"  Content="New Game" Canvas.Left="5" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
+            <Button Click="BtnBack_Click" x:Name="BtnBack" Content="Back" Canvas.Left="168" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
+            <Button Click="BtnExit_Click" x:Name="BtnExit" Content="Exit" Canvas.Left="332" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
+        </Canvas>
+
+        <Canvas x:Name="CanvasComputerComputer"  Width="auto" Height="120" d:IsHidden="False" Margin="0,480,0,0">
+            <Button Click="BtnStartGame_Click" x:Name="BtnStartGame"  Content="Start Game" Canvas.Left="5" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
+            <Button Click="BtnBack_Click" x:Name="BtnBack_1" Content="Back" Canvas.Left="168" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
+            <Button Click="BtnExit_Click" x:Name="BtnExit_1" Content="Exit" Canvas.Left="332" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
+        </Canvas>
+        <Canvas x:Name="CanvasUserComputer"  Width="auto" Height="120" d:IsHidden="True" Margin="0,480,0,0">
+            
+        </Canvas>
 
     </Grid>
 </Window>
