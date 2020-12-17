@@ -27,16 +27,26 @@ namespace TicTacToe
         private bool isGameFinisihed;
         List<Button> allButtons;
         string GameType;
+        XmlHandler xmlHandler;
+
+        //File name for xml
+        string xmlFileName;
 
         public GameWindow(string gameType)
         {
             InitializeComponent();
             GameType = gameType;
             List<string> cellContent = new List<string>();
+            xmlHandler = new XmlHandler();
+            
 
             if(gameType == "User - User")
             {
-        
+                //trim the extra characters from the user string
+                xmlFileName = gameType.Replace(" ", "");
+                //Get the current time in hours.
+                String hourMinute = DateTime.Now.ToString("mm");
+                xmlHandler.CreateXMLFile("../../xmlFiles/"+xmlFileName+hourMinute+".xml");
                 NewGame();
                 CanvasUserUser.Visibility = Visibility.Visible;
             }
@@ -127,6 +137,7 @@ namespace TicTacToe
                     if (isGameFinisihed) break;
                     random = new Random();
                     int randomInt = random.Next(0, 9);
+                    
                     status = ComputerClicks((Button)allButtons[randomInt]);
                 }
 
@@ -151,11 +162,13 @@ namespace TicTacToe
             }
 
             //set the cell value based on the player.
+            Thread.Sleep(2000);
             gameResults[index] = player1 ? Mark.Zero : Mark.Cross;
 
             //Change the button text color
             if (player1)
             {
+                
                 button.Foreground = Brushes.Red;
 
             }
