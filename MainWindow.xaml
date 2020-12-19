@@ -24,7 +24,8 @@
                 <ComboBoxItem Content="User - Computer"/>
                 <ComboBoxItem Content="Computer - Computer"/>
             </ComboBox>
-            <Button Content="Start" Name="btnStartGame" Visibility="Collapsed" Canvas.Left="134" Canvas.Top="370" Width="220" Height="70" Click="BtnStartGame_Click"/>
+            <Button Content="Start" Name="btnStartGame" Visibility="Collapsed" Canvas.Left="134" Canvas.Top="265" Width="220" Height="70" Click="BtnStartGame_Click"/>
+            <Button Content="Exit" x:Name="BtnEndGam" Canvas.Left="134" Canvas.Top="375" Width="220" Height="70" Click="BtnEndGame_Click"/>
         </Canvas>
 
     </Grid>

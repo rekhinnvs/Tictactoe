@@ -67,19 +67,25 @@
             </Grid>
         </Canvas>
         
-        <Canvas x:Name="CanvasUserUser"  Width="auto" Height="120" d:IsHidden="True" Margin="0,480,0,0">
+        <Canvas x:Name="CanvasUserUser"  Width="auto" Height="120" Visibility="Collapsed" Margin="0,480,0,0">
             <Button Click="BtnNew_Click" x:Name="BtnNewGame"  Content="New Game" Canvas.Left="5" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
             <Button Click="BtnBack_Click" x:Name="BtnBack" Content="Back" Canvas.Left="168" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
             <Button Click="BtnExit_Click" x:Name="BtnExit" Content="Exit" Canvas.Left="332" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
         </Canvas>
 
-        <Canvas x:Name="CanvasComputerComputer"  Width="auto" Height="120" d:IsHidden="False" Margin="0,480,0,0">
+        <Canvas x:Name="CanvasComputerComputer"  Width="auto" Height="120" Visibility="Collapsed" Margin="0,480,0,0">
             <Button Click="BtnStartGame_Click" x:Name="BtnStartGame"  Content="Start Game" Canvas.Left="5" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
             <Button Click="BtnBack_Click" x:Name="BtnBack_1" Content="Back" Canvas.Left="168" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
             <Button Click="BtnExit_Click" x:Name="BtnExit_1" Content="Exit" Canvas.Left="332" Canvas.Top="22" Width="160" Height="74" FontSize="20"/>
         </Canvas>
-        <Canvas x:Name="CanvasUserComputer"  Width="auto" Height="120" d:IsHidden="True" Margin="0,480,0,0">
+        <Canvas x:Name="CanvasUserComputer"  Width="auto" Height="120" Visibility="Collapsed" Margin="0,480,0,0">
             
+        </Canvas>
+        <Canvas x:Name="CanvasSimulateGame"  Width="auto" Height="120" Visibility="Visible" Margin="0,480,0,0">
+            <Button Click="BtnLoadGame_Click" x:Name="BtnLoadGame"  Content="Load" Canvas.Left="5" Canvas.Top="22" Width="110" Height="74" FontSize="20"/>
+            <Button Click="BtnSimulateStartGame_Click" x:Name="BtnSimulateStart"  Content="Start" Canvas.Left="129" Canvas.Top="22" Width="110" Height="74" FontSize="20"/>
+            <Button Click="BtnBack_Click" x:Name="BtnSimulatePause" Content="Pause" Canvas.Left="255" Canvas.Top="22" Width="110" Height="74" FontSize="20"/>
+            <Button Click="BtnBack_Click" x:Name="BtnSimulateBack" Content="Back" Canvas.Left="383" Canvas.Top="22" Width="110" Height="74" FontSize="20"/>
         </Canvas>
 
     </Grid>

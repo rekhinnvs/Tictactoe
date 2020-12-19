@@ -68,5 +68,10 @@ namespace TicTacToe
             Button button = (Button)sender;
             LaunchGameWindow(button.Content.ToString());
         }
+
+        private void BtnEndGame_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }
